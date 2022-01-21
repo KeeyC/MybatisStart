@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.example.mapper.StudentMapper">
+
+
+    <select id="getStudentList" resultType="com.example.User.Student">
+        select * from Student
+    </select>
+    <select id="selectStudentListById" parameterType="Long" resultType="Student">
+        select * from Student WHERE id=${id}
+    </select>
+    <select id="selectStudentByMap" parameterType="map" resultType="Student">
+        select * from Student WHERE name=#{username} and id=#{id}
+    </select>
+    <select id="insertStudent" parameterType="map">
+        INSERT INTO Student (id,name,age,address)VALUES (#{id},#{name},#{age},#{address})
+    </select>
+    <select id="updateStudent" parameterType="Student" >
+        update  student set name=#{name},address=#{address} WHERE id=#{id}
+    </select>
+    <select id="deleteStudentById" parameterType="Long" >
+        delete from Student Where id=#{id}
+    </select>
+
+</mapper>
